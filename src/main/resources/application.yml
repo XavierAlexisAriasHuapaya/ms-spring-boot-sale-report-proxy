@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ms-sale-report-proxy
+  profiles:
+    default: default
+  config:
+    import: "optional:configserver:http://localhost:7777"
+
+server:
+  servlet:
+    context-path: /proxy-report-sale
+  port: 7272
+
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
